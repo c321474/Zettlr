@@ -1,11 +1,11 @@
 <template>
   <div>
     <h4>Export</h4>
-    <SelectControl
+    <CheckboxField
       v-model="format"
       v-bind:label="'Format'"
       v-bind:options="availableFormats"
-    ></SelectControl>
+    ></CheckboxField>
     <!-- Here we can enumerate options for the currently selected format. -->
     <Form
       v-if="formSchema.fieldsets.length > 0"
@@ -33,6 +33,7 @@
 <script>
 import RadioControl from '../common/vue/form/elements/Radio'
 import SelectControl from '../common/vue/form/elements/Select'
+import CheckboxField from '../common/vue/form/elements/Checkbox'
 import Form from '../common/vue/form/Form'
 import { ipcRenderer } from 'electron'
 import Vue from 'vue'
@@ -41,6 +42,7 @@ export default {
   name: 'PopoverExport',
   components: {
     SelectControl,
+    CheckboxField,
     RadioControl,
     Form
   },

@@ -1,17 +1,19 @@
 <template>
   <div class="form-control">
-    <label class="checkbox">
-      <input
-        v-bind:id="fieldID"
-        type="checkbox" v-bind:name="name" value="yes"
-        v-bind:checked="value"
-        v-bind:disabled="disabled"
-        v-on:input="$emit('input', $event.target.checked)"
-      >
-      <span class="checkmark"></span>
-    </label>
-    <label v-if="label" v-bind:for="fieldID" v-html="label"></label>
+    <div v-for="(optionLabel, key) in options">
+      <label class="checkbox">
+        <input
+          v-bind:id="key"
+          type="checkbox" v-bind:name="name" v-bind:value="key"
+          v-bind:disabled="disabled"
+          v-on:input="$emit('input', $event.target.value)"
+        >
+        <span class="checkmark"></span>
+      </label>
+      <label>{{ optionLabel }}</label>
   </div>
+  </div>
+
 </template>
 
 <script>
@@ -19,8 +21,8 @@ export default {
   name: 'CheckboxField',
   props: {
     value: {
-      type: Boolean,
-      default: false
+      type: String,
+      default: ''
     },
     label: {
       type: String,
@@ -33,13 +35,17 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    options: {
+      type: Object,
+      default: function () { return {} }
     }
   },
-  computed: {
-    fieldID: function () {
-      return 'form-input-' + this.name
-    }
-  }
+  // methods: {
+  //   fieldID: function (key) {
+  //     // return 'form-input-' + this.name + '-' + key
+  //   }
+  // }
 }
 </script>
 
