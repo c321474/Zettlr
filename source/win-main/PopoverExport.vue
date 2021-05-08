@@ -41,8 +41,8 @@ import Vue from 'vue'
 export default {
   name: 'PopoverExport',
   components: {
-    SelectControl,
     CheckboxField,
+    SelectControl,
     RadioControl,
     Form
   },
@@ -53,6 +53,7 @@ export default {
       exportDirectory: 'temp',
       exporterInfo: [],
       currentOptions: {}
+
     }
   },
   computed: {

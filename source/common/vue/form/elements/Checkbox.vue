@@ -6,6 +6,7 @@
           v-bind:id="key"
           type="checkbox" v-bind:name="name" v-bind:value="key"
           v-bind:disabled="disabled"
+
           v-on:input="$emit('input', $event.target.value)"
         >
         <span class="checkmark"></span>
@@ -13,7 +14,7 @@
       <label>{{ optionLabel }}</label>
   </div>
   </div>
-
+<!--v-on:input="$emit('input', $event.target.value)"-->
 </template>
 
 <script>
@@ -40,7 +41,7 @@ export default {
       type: Object,
       default: function () { return {} }
     }
-  },
+  }
   // methods: {
   //   fieldID: function (key) {
   //     // return 'form-input-' + this.name + '-' + key
